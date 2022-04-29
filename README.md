@@ -12,3 +12,12 @@ docker-compose build
 docker-compose run app bin/setup
 docker-compose up -d app
 ```
+
+## Development
+
+### Running system tests
+
+```
+docker-compose up -d playwright
+docker-compose exec app bin/rails test:system
+```

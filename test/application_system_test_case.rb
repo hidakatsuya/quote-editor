@@ -1,5 +1,6 @@
 require "test_helper"
+require "playwright_driver"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+  driven_by :playwright, screen_size: [1400, 1400]
 end

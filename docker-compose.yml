@@ -17,6 +17,7 @@ services:
       - bundle:/bundle
     environment:
       REDIS_URL: redis://redis:6379
+      PLAYWRIGHT_URL: 'ws://playwright:8888/ws'
     depends_on:
       - redis
 
@@ -26,6 +27,12 @@ services:
       - '16379:6379'
     volumes:
       - redis-data:/data
+
+  playwright:
+    image: mcr.microsoft.com/playwright:focal
+    ports:
+      - '8888:8888'
+    command: bash -c "npx playwright install && npx playwright run-server --port 8888 --path /ws"
 
 volumes:
   redis-data:
