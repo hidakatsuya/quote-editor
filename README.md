@@ -4,3 +4,10 @@
 
 This is a sample application from my study of the Turbo Rails tutorial.
 https://www.hotrails.dev/turbo-rails
+
+## Usage
+
+```
+docker-compose build
+docker-compose up -d app
+```
