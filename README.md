@@ -9,5 +9,6 @@ https://www.hotrails.dev/turbo-rails
 
 ```
 docker-compose build
+docker-compose run app bin/setup
 docker-compose up -d app
 ```
