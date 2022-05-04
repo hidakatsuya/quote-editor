@@ -8,4 +8,5 @@ class Quote < ApplicationRecord
     # is euivalent to:
     broadcast_prepend_to "quotes"
   }
+  after_update_commit -> { broadcast_replace_to "quotes" }
 end
