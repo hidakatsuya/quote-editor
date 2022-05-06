@@ -18,4 +18,4 @@ jobs:
         docker-compose up -d
 
     - name: Test
-      run: docker-compose exec -T app bin/rails test:system
+      run: docker-compose exec -T app bin/rails test:all
