@@ -20,6 +20,16 @@ services:
       PLAYWRIGHT_URL: 'ws://playwright:8888/ws'
     depends_on:
       - redis
+      - postgres
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - '15432:5432'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
 
   redis:
     image: redis:5.0-alpine
@@ -37,3 +47,4 @@ services:
 volumes:
   redis-data:
   bundle:
+  pg-data:
