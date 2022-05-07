@@ -25,6 +25,8 @@ class QuotesTest < ApplicationSystemTestCase
 
     assert_selector 'h1', text: 'Quotes'
     assert_text 'Capybara quote'
+
+    assert_text 'Quote was successfully created.'
   end
 
   test 'Updating a quote' do
@@ -39,6 +41,8 @@ class QuotesTest < ApplicationSystemTestCase
 
     assert_selector 'h1', text: 'Quotes'
     assert_text 'Updated quote'
+
+    assert_text 'Quote was successfully updated.'
   end
 
   test 'Destroying a quote' do
@@ -47,5 +51,22 @@ class QuotesTest < ApplicationSystemTestCase
 
     click_on 'Delete', match: :first
     assert_no_text @quote.name
+
+    assert_text 'Quote was successfully destroyed.'
+  end
+
+  test "Showing the empty state" do
+    Quote.destroy_all
+    visit quotes_path
+
+    assert_text "You don't have any quotes yet!"
+
+    # Create a new quote
+    click_on 'Add quote'
+    fill_in 'Name', with: 'New quote!'
+    click_on 'Create quote'
+    assert_text 'New quote!'
+
+    assert_no_text "You don't have any quotes yet!"
   end
 end
