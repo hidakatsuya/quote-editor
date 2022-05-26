@@ -1,6 +1,8 @@
 require 'application_system_test_case'
 
-class QuotesTest < ApplicationSystemTestCase
+class LineItemDatesTest < ApplicationSystemTestCase
+  include ActionView::Helpers::NumberHelper
+
   setup do
     login_as users(:accountant)
 
@@ -52,5 +54,7 @@ class QuotesTest < ApplicationSystemTestCase
     assert_no_text I18n.l(Date.current, format: :long)
 
     assert_text "Date was successfully destroyed."
+
+    assert_text number_to_currency(@quote.total_price)
   end
 end

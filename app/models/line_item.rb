@@ -8,4 +8,8 @@ class LineItem < ApplicationRecord
   delegate :quote, to: :line_item_date
 
   scope :ordered, -> { order(id: :asc) }
+
+  def total_price
+    quantity * unit_price
+  end
 end
